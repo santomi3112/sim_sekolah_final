@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "33746042720",
+    "firebase_url": "https://simsekolahfinal.firebaseio.com",
+    "project_id": "simsekolahfinal",
+    "storage_bucket": "simsekolahfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33746042720:android:08f3a4abda4e2055582805",
+        "android_client_info": {
+          "package_name": "grafika.com.sim_sekolah_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33746042720-phcspot067f9qfn4o2qq45t99tg7segd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "grafika.com.sim_sekolah_final",
+            "certificate_hash": "cc8bac7f9d359f74c6628baef41a330704cd6d8e"
+          }
+        },
+        {
+          "client_id": "33746042720-bgjju6a8tq9k3796l6skhjb9suqpssuc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp5cYxpV86Dr1ayujONG9HaH0Vr4wHfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33746042720-bgjju6a8tq9k3796l6skhjb9suqpssuc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
