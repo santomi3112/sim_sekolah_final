@@ -21,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
               height: 120.0,
             ),
             TextFormField(
+              //email
+              keyboardType: TextInputType.emailAddress,
               validator: (input) {
                 if (input.isEmpty) {
                   return 'Please fill this form!';
@@ -49,6 +51,8 @@ class _LoginPageState extends State<LoginPage> {
               height: 12.0,
             ),
             TextFormField(
+              //pwd
+              textInputAction: TextInputAction.continueAction,
               validator: (input) {
                 if (input.isEmpty) {
                   return 'Please fill this form!';

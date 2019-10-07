@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sim_sekolah_final/main.dart';
 
 class LoginButton extends StatefulWidget {
   @override
@@ -18,10 +17,7 @@ class _LoginButtonState extends State<LoginButton> {
         height: 43.0,
         color: Colors.blue,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
-          );
+          Navigator.of(context).pushReplacementNamed('/home');
         },
       ),
     );
@@ -45,10 +41,7 @@ class _RegisterButtonState extends State<RegisterButton> {
         height: 43.0,
         color: Colors.blue,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
-          );
+          Navigator.of(context).pushReplacementNamed('/home');
         },
       ),
     );

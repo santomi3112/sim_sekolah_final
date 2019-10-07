@@ -12,15 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Sim Sekolah",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Loginreg(
         title: "Sim Sekolah",
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Loginreg(
+          title: "Sim Sekolah",
+        ),
+        routes: <String, WidgetBuilder>{
+          '/loginreg': (BuildContext context) => Loginreg(),
+          '/home': (BuildContext context) => MyHomePage()
+        });
   }
 }
 
@@ -73,11 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             activeIcon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
-              child: Image.asset(
-                'images/homework.png',
-                height: 25.0,
-                width: 25.0,
-              ),
+              child: Icon(Icons.schedule),
             ),
             icon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -88,11 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             activeIcon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
-              child: Image.asset(
-                'images/habit.png',
-                height: 25.0,
-                width: 25.0,
-              ),
+              child: Icon(Icons.schedule),
             ),
             icon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -103,11 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             activeIcon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
-              child: Image.asset(
-                'images/fee.png',
-                height: 25.0,
-                width: 25.0,
-              ),
+              child: Icon(Icons.schedule),
             ),
             icon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -118,11 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             activeIcon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
-              child: Image.asset(
-                'images/user.png',
-                height: 25.0,
-                width: 25.0,
-              ),
+              child: Icon(Icons.schedule),
             ),
             icon: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
