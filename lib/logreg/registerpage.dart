@@ -59,7 +59,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             TextFormField(
               //pwd
-              textInputAction: TextInputAction.continueAction,
               controller: _passwordController,
               validator: (String value) {
                 if (value.isEmpty) {

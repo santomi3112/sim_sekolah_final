@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
-import 'package:sim_sekolah_final/fungsi/button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _success;
+  String _userEmail;
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -22,13 +28,14 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextFormField(
               //email
+              controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              validator: (input) {
-                if (input.isEmpty) {
-                  return 'Please fill this form!';
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
                 }
+                return null;
               },
-              onSaved: (input) => _email = input,
               decoration: InputDecoration(
                 fillColor: Colors.lightBlue[50],
                 filled: true,
@@ -52,13 +59,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextFormField(
               //pwd
-              textInputAction: TextInputAction.continueAction,
-              validator: (input) {
-                if (input.isEmpty) {
-                  return 'Please fill this form!';
+              controller: _passwordController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
                 }
+                return null;
               },
-              onSaved: (input) => _password = input,
               decoration: InputDecoration(
                 fillColor: Colors.lightBlue[50],
                 filled: true,
@@ -81,13 +88,63 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 165.0,
             ),
-            LoginButton(),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              alignment: Alignment.center,
+              child: RaisedButton(
+                onPressed: () async {
+                  if (_formKey.currentState.validate()) {
+                    _signInWithEmailAndPassword();
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                _success == null
+                    ? ''
+                    : (_success
+                        ? 'Successfully signed in ' + _userEmail
+                        : 'Sign in failed'),
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
             GoogleSignInButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/home');
+              },
             ),
           ],
         ),
       ),
     );
+  }
+
+  //TODO sign in
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  // Example code of how to sign in with email and password.
+  void _signInWithEmailAndPassword() async {
+    final FirebaseUser user = (await _auth.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    ))
+        .user;
+    if (user != null) {
+      setState(() {
+        _success = true;
+        _userEmail = user.email;
+      });
+    } else {
+      _success = false;
+    }
   }
 }
